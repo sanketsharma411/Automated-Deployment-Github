@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 app = Flask(__name__)
 
 @app.route('/')
@@ -8,9 +8,9 @@ def home():
 
 @app.route('/postreceive/', methods = ['POST','GET'])
 def postreceive():
-    if response.method == 'POST':
-        return str(response)
-    if response.method == 'GET':
+    if request.method == 'POST':
+        return str(request.args)
+    if request.method == 'GET':
         return 'GET Request made'
     else:
         return 'Incorrect Response Type'
