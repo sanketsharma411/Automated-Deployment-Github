@@ -6,10 +6,14 @@ def home():
     return 'The server is up and running\nThis is the homepage'
     
 
-@app.route('/postreceive/', methods = ['POST'])
+@app.route('/postreceive/', methods = ['POST','GET'])
 def postreceive():
     if response.method == 'POST':
-        return response
+        return str(response)
+    if response.method == 'GET':
+        return 'GET Request made'
+    else:
+        return 'Incorrect Response Type'
     
     
 # If called from command line run in Flask development server
