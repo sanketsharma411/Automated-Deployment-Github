@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 @app.route('/')
@@ -9,7 +9,7 @@ def home():
 @app.route('/postreceive/', methods = ['POST','GET'])
 def postreceive():
     if request.method == 'POST':
-        return str(type(request.args))
+        return jsonify(request.args)
     if request.method == 'GET':
         return 'GET Request made'
     else:
