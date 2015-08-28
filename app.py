@@ -9,7 +9,7 @@ def home():
 @app.route('/postreceive/', methods = ['POST','GET'])
 def postreceive():
     if request.method == 'POST':
-        return str(request.args)
+        return request.args
     if request.method == 'GET':
         return 'GET Request made'
     else:
