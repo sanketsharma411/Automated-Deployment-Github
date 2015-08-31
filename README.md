@@ -1,5 +1,5 @@
 # flask-api-test
-Testing automated deplolyment of apps using GitHub's Post-receive hooks
+Testing automated deplolyment of code using GitHub's Post-receive hooks
 
 
 
