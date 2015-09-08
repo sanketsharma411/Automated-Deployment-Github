@@ -14,6 +14,7 @@ def postreceive():
     if request.method == 'POST':
         try: 
             validate_postreceive_hook(request.data)
+            return "Data Validation : Complete"
         except ValueError,e:
             return str(e)
         return request.data
