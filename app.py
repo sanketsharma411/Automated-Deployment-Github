@@ -11,7 +11,7 @@ def home():
 def postreceive():
     if request.method == 'POST':
         #return str(request.args.get("zen",'NO ZEN'))
-        return jsonify(request.data)
+        return request.data
     if request.method == 'GET':
         return 'GET Request made\n'+str(request.args.get("zen",'NO ZEN'))
     
