@@ -30,6 +30,7 @@ Right now you also have to modify running access to the bash script
 
 ## Steps:
 To setup this utility with your deployment server 
+
 1. git clone your repo
 2. git clone this repo somewhere else
 3. (complete these with stuff to do : 1)
