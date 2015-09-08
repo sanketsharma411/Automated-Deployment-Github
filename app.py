@@ -12,10 +12,7 @@ def home():
 @app.route('/postreceive/', methods = ['POST','GET'])
 def postreceive():
     if request.method == 'POST':
-        try: 
-            validate_postreceive_hook(request.data)
-        except ValueError,e:
-            return str(e)
+        
         return "Data Validated"
     else:
         return "Invalid METHOD %s" %str(request.method)
