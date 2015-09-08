@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+import json
 app = Flask(__name__)
 
 @app.route('/')
@@ -13,6 +14,8 @@ def postreceive():
     #    return str(request.args.items())
     #if request.method == 'GET':
     #    return 'GET Request made\n'+str(request.args.get("zen",'NO ZEN'))
+    with open('json_data','wb') as f:
+        json.dump(request.args,f)
     return 'Okay fine'
     
     
