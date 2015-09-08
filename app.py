@@ -19,11 +19,11 @@ def postreceive():
         return str(request.data.get("zen",'NO ZEN'))
     else:
         return "Invalid METHOD %s" %str(request.method)
+        
 # Loading json data
 with open('app_data.json','r') as f:
     app_data = json.load(f)
     print app_data
-    
     
 def validate_postreceive_hook(data):
     if data['html_url'] == app_data['html_url'] :
