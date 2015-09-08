@@ -12,13 +12,13 @@ Testing automated deplolyment through GitHub's Post-receive hooks
 ### Stuff to do
 
 5. Create a bash script which updates the local repo 
-6. Run the bash script whenever a "message" is received from GitHub
+6. Verify/validate the "message" received from GitHub
+7. Run the bash script from python
 
 
 ## Notes:
-1. We won't be editing any of the files from the production server.
-
-
-The post receive hook delivers some payload thing which is not a part of the request.args but is instead a component 
-of request.dataStatus API Training Shop Blog About Pricing
-© 2015 GitHub, Inc. Terms Privacy Security Contact Help
+- We won't be editing any of the files from the production server, so no conflicts 
+and it will always pull from the origin/master branch
+- The post receive hook delivers some payload thing which is not a part of the request.args but is instead a component 
+of request.data
+- The only way we are using the post-recieve hooks now is to tell the server to "git pull". This should be extended later !
