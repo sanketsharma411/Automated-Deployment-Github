@@ -26,6 +26,7 @@ of request.data.
 Also, note any POST request to the server with data = {'repository':{'url':'url_for_this_repo'}} will trigger the "git pull".
 Which means that any false request can trigger a pull from the current branch thus always keep the current branch working perfectly
 
+Right now you also have to modify running access to the bash script
 
 ## Steps:
 To setup this utility with your deployment server 
