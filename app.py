@@ -20,7 +20,7 @@ def home():
 def postreceive():
     if request.method == 'POST' and validate_postreceive_hook(json.loads(request.data)):
         # Now run the bash_script for updating the local git repo
-        
+        run_bash_script()
         return 'Bash Script Running'
         
     
@@ -30,6 +30,10 @@ def validate_postreceive_hook(data):
         return False
     return True
 
+def run_bash_script():
+    """Run the defined bash_script"""
+    subprocess.call('./script1.sh',shell=True)
+    
 # If called from command line run in Flask development server
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=9999)
