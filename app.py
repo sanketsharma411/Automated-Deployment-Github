@@ -9,14 +9,12 @@ def home():
 
 @app.route('/postreceive/', methods = ['POST','GET'])
 def postreceive():
-    #if request.method == 'POST':
-    #    #return str(request.args.get("zen",'NO ZEN'))
-    #    return str(request.args.items())
-    #if request.method == 'GET':
-    #    return 'GET Request made\n'+str(request.args.get("zen",'NO ZEN'))
-    with open('json_data','wb') as f:
-        json.dump(request.data,f)
-    return 'Okay fine'
+    if request.method == 'POST':
+        #return str(request.args.get("zen",'NO ZEN'))
+        return jsonify(request.data)
+    if request.method == 'GET':
+        return 'GET Request made\n'+str(request.args.get("zen",'NO ZEN'))
+    
     
     
 # If called from command line run in Flask development server
