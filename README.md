@@ -8,13 +8,13 @@ Testing automated deplolyment through GitHub's Post-receive hooks
 2. Serve it through gunicorn on AWS EC2 instance
 3. Setup a GitHub post-receive hook for this project
 4. Accept the POST request in Flask, and look into it
-
-### Stuff to do
-
 5. Create a bash script which updates the local repo 
 6. Verify/validate the "message" received from GitHub
 7. Run the bash script from python
-8. Low Priority : Convert it to a nice utility such that it can be used with any project
+
+### Stuff to do
+
+1. Low Priority : Convert it to a nice utility such that it can be used with any project
 
 
 ## Notes:
@@ -32,4 +32,4 @@ Right now you also have to modify running access to the bash script
 To setup this utility with your deployment server 
 1. git clone your repo
 2. git clone this repo somewhere else
-3. (complete these with stuff to do : 4)
+3. (complete these with stuff to do : 1)
