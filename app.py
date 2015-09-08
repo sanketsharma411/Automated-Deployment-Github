@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 import json
 app = Flask(__name__)
 
+GLOBAL app_data
+
 @app.route('/')
 def home():
     return 'The server is up and running\nThis is the homepage'
@@ -10,12 +12,24 @@ def home():
 @app.route('/postreceive/', methods = ['POST','GET'])
 def postreceive():
     if request.method == 'POST':
-        #return str(request.args.get("zen",'NO ZEN'))
-        return request.data
-    if request.method == 'GET':
-        return 'GET Request made\n'+str(request.args.get("zen",'NO ZEN'))
+        try: 
+            validate_postreceive_hook(request.data)
+        except ValueError,e:
+            return str(e)
+        return str(request.data.get("zen",'NO ZEN'))
+    else:
+        return "Invalid METHOD %s" %str(request.method)
+# Loading json data
+with open('app_data.json','r') as f:
+    app_data = json.load(f)
+    print app_data
     
     
+def validate_postreceive_hook(data):
+    if data['html_url'] == app_data['html_url'] :
+        return None
+    else:
+        raise ValueError('Invalid data')
     
 # If called from command line run in Flask development server
 if __name__ == '__main__':
