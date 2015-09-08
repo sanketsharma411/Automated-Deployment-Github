@@ -12,17 +12,12 @@ def home():
 @app.route('/postreceive/', methods = ['POST','GET'])
 def postreceive():
     if request.method == 'POST':
-        try: 
-            if 'repository' not in request.data:
-                return 'key "repository" not present in the passed data'
-            elif data['repository']['html_url'] != app_data['html_url'] :
-                return 'invalid html url for the repository'
-            return "Data Validation : Complete"
-        except ValueError,e:
-            return str(e)
-        return request.data
+        if validate_postreceive_hook(json.loads(request.data)):
+            return 'Invalid Data'
+        else:
+            return 'OK Fine'
     else:
-        return "Invalid METHOD %s" %str(request.method)
+        return 'Invalid Method-%s'%(request.method)
         
 # Loading json data
 with open('app_data.json','r') as f:
@@ -30,7 +25,8 @@ with open('app_data.json','r') as f:
     
 def validate_postreceive_hook(data):
     if data['repository']['html_url'] != app_data['html_url'] :
-        raise ValueError('Invalid Repository URL')
+        return False
+    return True
 
 # If called from command line run in Flask development server
 if __name__ == '__main__':
