@@ -1,8 +1,15 @@
 from flask import Flask, request, jsonify
-import json
+import json,subprocess
 app = Flask(__name__)
 
+######################################################
+## Loading Validation Data
+######################################################
 global app_data
+# Loading json data
+with open('app_data.json','r') as f:
+    app_data = json.load(f)
+
 
 @app.route('/')
 def home():
@@ -11,19 +18,14 @@ def home():
 
 @app.route('/postreceive/', methods = ['POST','GET'])
 def postreceive():
-    if request.method == 'POST':
-        if validate_postreceive_hook(json.loads(request.data)):
-            return 'Invalid Data'
-        else:
-            return 'OK Fine'
-    else:
-        return 'Invalid Method-%s'%(request.method)
+    if request.method == 'POST' and validate_postreceive_hook(json.loads(request.data)):
+        # Now run the bash_script for updating the local git repo
         
-# Loading json data
-with open('app_data.json','r') as f:
-    app_data = json.load(f)
+        return 'Bash Script Running'
+        
     
 def validate_postreceive_hook(data):
+    """Validate the passed dict by comparing it with local data"""
     if data['repository']['html_url'] != app_data['html_url'] :
         return False
     return True

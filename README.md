@@ -19,7 +19,16 @@ Testing automated deplolyment through GitHub's Post-receive hooks
 
 ## Notes:
 - We won't be editing any of the files from the production server, so no conflicts 
-and it will always pull from the origin/master branch
+and it will always pull from the current branch (modify later for selecting production/deployment branch)
 - The post receive hook delivers some payload thing which is not a part of the request.args but is instead a component 
-of request.data
-- The only way we are using the post-recieve hooks now is to tell the server to "git pull". This __should__ be extended later !
+of request.data.
+- The only way we are using the post-recieve hooks now is to tell the server to "git pull". This __should__ be extended later.
+Also, note any POST request to the server with data = {'repository':{'url':'url_for_this_repo'}} will trigger the "git pull".
+Which means that any false request can trigger a pull from the current branch thus always keep the current branch working perfectly
+
+
+## Steps:
+To setup this utility with your deployment server 
+1. git clone your repo
+2. git clone this repo somewhere else
+3. (complete these with stuff to do : 4)
