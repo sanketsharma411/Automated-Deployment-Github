@@ -13,7 +13,10 @@ def home():
 def postreceive():
     if request.method == 'POST':
         try: 
-            validate_postreceive_hook(request.data)
+            if 'repository' not in request.data:
+                return 'key "repository" not present in the passed data'
+            elif data['repository']['html_url'] != app_data['html_url'] :
+                return 'invalid html url for the repository'
             return "Data Validation : Complete"
         except ValueError,e:
             return str(e)
