@@ -13,7 +13,7 @@ def postreceive():
         return str(request.args.items())
     if request.method == 'GET':
         return 'GET Request made\n'+str(request.args.get("zen",'NO ZEN'))
-    
+    return 'Okay fine'
     
     
 # If called from command line run in Flask development server
