@@ -11,8 +11,8 @@ Testing automated deplolyment through GitHub's Post-receive hooks
 
 ### Stuff to do
 
-5. Use logsol's [Github-Auto-Deploy](https://github.com/logsol/Github-Auto-Deploy) tool or write your own 
-to accept a POST request from GitHub and update the local repo.
+5. Create a bash script which updates the local repo 
+6. Run the bash script whenever a "message" is received from GitHub
 
 
 ## Notes:
@@ -20,4 +20,5 @@ to accept a POST request from GitHub and update the local repo.
 
 
 The post receive hook delivers some payload thing which is not a part of the request.args but is instead a component 
-of request.data
+of request.dataStatus API Training Shop Blog About Pricing
+© 2015 GitHub, Inc. Terms Privacy Security Contact Help
