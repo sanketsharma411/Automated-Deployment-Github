@@ -32,7 +32,7 @@ def validate_postreceive_hook(data):
 
 def run_bash_script():
     """Run the defined bash_script"""
-    subprocess.call('./script1.sh',shell=True)
+    subprocess.call('./git_pull.sh',shell=True)
     
 # If called from command line run in Flask development server
 if __name__ == '__main__':
