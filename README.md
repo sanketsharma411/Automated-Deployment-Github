@@ -16,3 +16,7 @@ to accept a POST request from GitHub and update the local repo.
 
 ## Notes:
 1. We won't be editing any of the files from the production server.
+
+
+The post receive hook delivers some payload thing which is not a part of the request.args but is instead a component 
+of request.data
